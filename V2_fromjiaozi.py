@@ -329,6 +329,8 @@ class MainWindow(QMainWindow):
             Text = self.GenerateEquipList()
             Textset=set(Text)
             Textset=Textset.union(tempequipset)
+            if len(Text)+len(tempequipset)>len(Textset):
+                continue
             for equipset in ConflictEquip:
                 if len(equipset.intersection(Textset)) > 1:
                     flag = 1
@@ -396,11 +398,6 @@ class MainWindow(QMainWindow):
             else:
                 continue
         self.generate_equip()
-
-
-
-
-
 
 
 if __name__ == "__main__":
